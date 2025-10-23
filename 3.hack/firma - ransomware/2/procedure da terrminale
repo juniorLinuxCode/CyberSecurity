@@ -1,0 +1,8 @@
+terminale
+
+echo "Il gatto è vivo" > plain.txt
+openssl genrsa -out privkey.pem 2048
+openssl rsa -in privkey.pem -pubout -out pubkey.pem
+openssl dgst -sha256 -sign privkey.pem -out plain.txt.sig plain.txt
+openssl dgst -sha256 -verify pubkey.pem -signature plain.txt.sig plain.txt
+

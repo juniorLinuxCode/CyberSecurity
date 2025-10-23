@@ -1,0 +1,27 @@
+echo "The cat is alive" > plain.txt
+
+openssl genrsa -out pub_priv_pair.key 1024
+
+openssl rsa -text -in pub_priv_pair.key
+
+openssl rsa -in pub_priv_pair.key -pubout -out public_out.key
+
+openssl pkey -in pub_priv_pair.key -out private_out.key
+
+openssl rsa -in pub_priv_pair.key -pubout -out public_key.pem
+
+openssl pkeyutl -encrypt -pubin -inkey public_out.key -in plain.txt -out cipher.bin -pkeyopt rsa_padding_mode:oaep
+
+openssl base64 -in cipher.bin -out cipher64.txt
+
+openssl base64 -d -in cipher64.txt -out cipher64.bin
+
+openssl pkeyutl -decrypt -inkey pub_priv_pair.key -in cipher64.bin -out plainD.txt -pkeyopt rsa_padding_mode:oaep
+
+#SUL TERMINALE in  una cartella 
+
+#successivamente sulla macchina della vittima passare il file client e il cipher
+
+#avviare sull'host da terminale sudo python3 (nomefile) =lll host si mette innn ascolto
+
+#sul pc della vittiimaa avviare il file client= mettere indirizzo ip del host, porta del host e li uscira il file decriptato

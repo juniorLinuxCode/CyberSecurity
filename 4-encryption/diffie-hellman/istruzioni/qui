@@ -1,0 +1,28 @@
+openssl genpkey -genparam -algorithm DH -out parametersPG.pem
+
+openssl pkeyparam -in parametersPG.pem -text
+
+penssl genpkey -paramfile parametersPG.pem -out AlicePublicPrivateKeyPair.pem
+
+openssl pkey -in AlicePublicPrivateKeyPair.pem -text -noout
+
+openssl genpkey -paramfile parametersPG.pem -out BobPublicPrivateKeyPair.pem
+
+openssl pkey -in AlicePublicPrivateKeyPair.pem -pubout -out AlicePublicKey.pem
+
+openssl pkey -in BobPublicPrivateKeyPair.pem -pubout -out BobPublicKey.pem
+
+openssl pkey -pubin -in BobPublicKey.pem -text
+
+openssl pkeyutl -derive -inkey AlicePublicPrivateKeyPair.pem -peerkey BobPublicKey.pem -out AliceSharedSecret.bin
+
+openssl pkeyutl -derive -inkey BobPublicPrivateKeyPair.pem -peerkey AlicePublicKey.pem -out BobSharedSecret.bin
+
+xxd AliceSharedSecret.bin
+
+
+#comparazione delle chiavi 
+
+cmp AliceSharedSecret.bin BobSharedSecret.bin
+
+#da terminale nella cartella

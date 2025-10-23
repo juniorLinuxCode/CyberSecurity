@@ -1,0 +1,22 @@
+#creare due cartelle sulla macchina host (server e client)
+#creare queststi file da terminale 
+#poi posizionarli come sono inseriti nelle cartelle
+#impostare la porta sul file secure_socket_server
+
+openssl req -new -newkey rsa:3072 -days 365 -nodes -x509 \
+-keyout server.key -out server.crt #si puo lasciare anche vuoto
+
+
+
+#scaricare sul computer client la cartella client
+#impostare l'indirizzo ip e la porta sul file secure_socket_client
+#generare il certificato client con quessto comando 
+
+openssl req -new -newkey rsa:3072 -days 365 -nodes -x509 -keyout client.key -out client.crt
+
+#dopo di che eseguire prima il server poi il client, scrivere un messaggio
+
+##############################################################################
+#   questo serve a scambiare le comuncazioni in maniera sicura grazie al TLS 1.3 
+#   e a garantire, grazie al certificato che il sito sia effettivamente affidabile e non manipolato
+

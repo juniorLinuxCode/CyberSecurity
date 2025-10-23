@@ -1,0 +1,28 @@
+Per creare le varie chiavi seguire i seguenti passaggi:
+
+Creazione file testuale: echo "Forza Napoli" > plain.txt
+Generazione chiave privata:
+
+openssl genrsa -out pub_priv_pair.key 1024
+Visualizzazione:
+
+openssl rsa -text -in pub_priv_pair.key
+Estazione chiave pubblica:
+
+openssl rsa -in pub_priv_pair.key -pubout -out public_out.key
+openssl pkey -in pub_priv_pair.key -out private_out.key
+openssl rsa -in pub_priv_pair.key -pubout -out public_key.pem
+Inserimento chiave crittografata nel file chiper.bin:
+
+openssl pkeyutl -encrypt -pubin -inkey public_out.key -in plain.txt -out cipher.bin -pkeyopt rsa_padding_mode:oaep
+cat file.bin > file.txt
+
+Cambiamo il formato della crittografia in base 64:
+
+openssl base64 -in cipher.bin -out cipher64.txt
+openssl base64 -d -in cipher64.txt -out cipher64.bin
+
+Per decrittografe usiamo questo comando che lo inserisce nel file plainD.txt:
+
+openssl pkeyutl -decrypt -inkey pub_priv_pair.key -in cipher64.bin -out plainD.txt -pkeyopt rsa_padding_mode:oaep
+

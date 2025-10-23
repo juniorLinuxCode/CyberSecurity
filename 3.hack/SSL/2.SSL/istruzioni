@@ -1,0 +1,12 @@
+#aprire il terminale nella cartella
+#eseguire questo comando 
+
+python3 server_client_cert_gen.py gen_certs
+
+#come nelle istruzioni
+#una volta che genera i certificati, inserire nella macchiona client sia il file server_client_cert_gen.py
+#e anche le cose che stanno nella cartella "file in entrambi i sistemi"
+
+#successivamente avviare il file in entrambe le macchine
+#pero eseguirlo prima con l'host con     -------------------------      | sudo python3 server_client_cert_gen.py server (ip della macchina host)
+#successivamente stesso passaggio sulla macchina del client ma inserire:| sudo python3 server_client_cert_gen.py client (ip della macchina host)
