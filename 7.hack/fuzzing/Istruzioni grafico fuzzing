@@ -1,0 +1,12 @@
+#inserire nella catrtella le stesse e identiche cose e nelle stesse e identiche posizioni 
+#occhio al codice!
+#una volta aver inserito tutte le cartelle come segue 
+
+#inserire sul terminale, aperto nella cartella dove è presente il file fuzzExample.py
+
+py-afl-fuzz -i /home/kalilinux/generale1/vs_esercitazione/7.hack/fuzzing/afl/TestInput -o /home/kalilinux/generale1/vs_esercitazione/7.hack/fuzzing/afl/Results -- ~/my_afl_venv/bin/python3 /home/kalilinux/generale1/vs_esercitazione/7.hack/fuzzing/afl/fuzzExample.py
+
+#quindi 
+
+
+#py-afl-fuzz-i (percorso cartella TestInput) -o (percorsa cartella risultati) -- (percorso python3) (percorso dove è presente il codice)

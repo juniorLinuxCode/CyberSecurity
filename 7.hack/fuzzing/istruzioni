@@ -1,0 +1,15 @@
+# se non va eseguire questi comandi sul terminale 
+
+sudo apt update
+sudo apt install python3-venv
+python3 -m venv ~/afl-venv
+source ~/afl-venv/bin/activate
+pip install python-afl
+
+#per eseguirlo 
+
+python App/fuzzExample.py < TestInput/testInput1.txt
+
+#creare le cartelle cosi come si presentano nella seguente cartella
+
+#senza grafico

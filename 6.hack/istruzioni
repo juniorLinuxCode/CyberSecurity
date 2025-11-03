@@ -1,0 +1,11 @@
+#per avviarla
+#tasto destro del mouse e aprire il terminale nella cartella 
+#inserire il comando
+
+#PER DARE I PERMESSI:= sudo chmod +x discover.sh
+
+#sudo ./discover.sh
+#./discover.sh
+
+
+    ##PER MIGLLIORARE L 'EFFICACIA INSERIRLO NEL FILE SYSTEM OPT ====  /opt/
